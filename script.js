@@ -14,6 +14,23 @@ let running = false;
 let paused = false;
 let stopRequested = false;
 
+// Time complexity data for each algorithm
+const complexityData = {
+  'Bubble Sort': { best: 'O(n)', average: 'O(n²)', worst: 'O(n²)' },
+  'Selection Sort': { best: 'O(n²)', average: 'O(n²)', worst: 'O(n²)' },
+  'Insertion Sort': { best: 'O(n)', average: 'O(n²)', worst: 'O(n²)' },
+  'Merge Sort': { best: 'O(n log n)', average: 'O(n log n)', worst: 'O(n log n)' },
+  'Quick Sort': { best: 'O(n log n)', average: 'O(n log n)', worst: 'O(n²)' },
+  'Heap Sort': { best: 'O(n log n)', average: 'O(n log n)', worst: 'O(n log n)' },
+  'Shell Sort': { best: 'O(n log n)', average: 'O(n^1.3)', worst: 'O(n²)' },
+  'Cocktail Sort': { best: 'O(n)', average: 'O(n²)', worst: 'O(n²)' },
+  'Comb Sort': { best: 'O(n log n)', average: 'O(n²)', worst: 'O(n²)' },
+  'Gnome Sort': { best: 'O(n)', average: 'O(n²)', worst: 'O(n²)' },
+  'Counting Sort': { best: 'O(n+k)', average: 'O(n+k)', worst: 'O(n+k)' },
+  'Radix Sort': { best: 'O(nk)', average: 'O(nk)', worst: 'O(nk)' },
+  'Bucket Sort': { best: 'O(n+k)', average: 'O(n+k)', worst: 'O(n²)' }
+};
+
 function randInt(min, max){ return Math.floor(Math.random()*(max-min+1))+min }
 
 function generateArray(n=60){
@@ -376,5 +393,16 @@ resetBtn.addEventListener('click', ()=>{ stopRequested = true; paused = false; p
 
 sizeInput.addEventListener('input', ()=>{ generateArray(Number(sizeInput.value)); });
 
+algorithmSelect.addEventListener('change', ()=>{ updateComplexity(); });
+
+function updateComplexity(){
+  const selected = algorithmSelect.value;
+  const data = complexityData[selected] || { best: '-', average: '-', worst: '-' };
+  document.getElementById('best').textContent = data.best;
+  document.getElementById('average').textContent = data.average;
+  document.getElementById('worst').textContent = data.worst;
+}
+
 // initial
-generateArray(Number(sizeInput.value));ī
+generateArray(Number(sizeInput.value));
+updateComplexity();ī

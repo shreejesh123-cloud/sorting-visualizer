@@ -16,8 +16,12 @@ select,input[type=range]{background:transparent;color:inherit;border:1px solid r
 button{background:var(--accent);border:none;color:#fff;padding:8px 12px;border-radius:6px;cursor:pointer}
 button:disabled{opacity:0.5;cursor:not-allowed}
 .note{color:var(--muted);margin-top:8px}
-main{padding:12px;max-width:1200px;margin:6px auto}
-.container{height:60vh;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);display:flex;align-items:flex-end;gap:2px;padding:10px;border-radius:8px;overflow:hidden}
+.complexity-info{background:rgba(255,255,255,0.02);margin:6px auto;padding:8px;border-radius:8px;max-width:980px}
+.complexity-info h3{margin:0;font-size:0.9rem;color:var(--accent)}
+.complexity-details{background:rgba(255,255,255,0.03);padding:6px 8px;border-radius:6px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.complexity-details p{margin:0;font-family:monospace;font-size:0.85rem}
+main{padding:8px;max-width:1200px;margin:4px auto}
+.container{height:50vh;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);display:flex;align-items:flex-end;gap:2px;padding:10px;border-radius:8px;overflow:hidden}
 .bar{flex:1 1 auto;background:linear-gradient(180deg,#60a5fa,#1e3a8a);height:10px;border-radius:3px;transition:height 120ms ease}
 .bar.small{margin:0 1px}
 .bar.compare{background:#f97316}
