@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sorting Visualizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Sorting Visualizer</h1>
+    <p class="sub">Visualize common sorting algorithms with adjustable speed and size.</p>
+  </header>
+
+  <section class="controls">
+    <div class="row">
+      <label>Algorithm
+        <select id="algorithm">
+          <option>Bubble Sort</option>
+          <option>Selection Sort</option>
+          <option>Insertion Sort</option>
+          <option>Merge Sort</option>
+          <option>Quick Sort</option>
+          <option>Heap Sort</option>
+          <option>Shell Sort</option>
+          <option>Cocktail Sort</option>
+          <option>Comb Sort</option>
+          <option>Gnome Sort</option>
+          <option>Counting Sort</option>
+          <option>Radix Sort</option>
+          <option>Bucket Sort</option>
+        </select>
+      </label>
+
+      <label>Size <input id="size" type="range" min="10" max="200" value="60"></label>
+
+      <label>Speed <input id="speed" type="range" min="1" max="1000" value="150"></label>
+    </div>
+
+    <div class="row">
+      <button id="generate">Generate Array</button>
+      <button id="start">Start</button>
+      <button id="pause">Pause</button>
+      <button id="reset">Reset</button>
+    </div>
+
+    <p class="note">Tip: Lower speed value = faster animation.</p>
+  </section>
+
+  <main>
+    <div id="container" class="container"></div>
+  </main>
+
+  <footer>
+    <small>Created as a sorting visualizer project.</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
