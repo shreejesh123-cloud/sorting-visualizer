@@ -16,10 +16,6 @@ It is designed as a resume project to showcase front-end development skills and 
 - Merge Sort
 - Quick Sort
 - Heap Sort
-- Shell Sort
-- Cocktail Sort
-- Comb Sort
-- Gnome Sort
 - Counting Sort
 - Radix Sort
 - Bucket Sort
@@ -51,7 +47,7 @@ It is designed as a resume project to showcase front-end development skills and 
 
 ## ⚙️ Customization
 
-- Modify `script.js` to add new sorting algorithms or change animation logic.
+- Modify `script.js` to add more algorithms or tweak animation logic.
 - Update styles and colors inside `style.css` to customize UI appearance.
 
 ---
@@ -67,7 +63,7 @@ It is designed as a resume project to showcase front-end development skills and 
 ## 📚 Purpose
 
 This project was developed as a resume-ready major project to demonstrate:
-- Strong understanding of sorting algorithms
+- Strong understanding of core sorting algorithms
 - Visualization of algorithm behaviour
 - Front-end development and DOM animation skills
 

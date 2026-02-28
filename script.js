@@ -22,10 +22,6 @@ const complexityData = {
   'Merge Sort': { best: 'O(n log n)', average: 'O(n log n)', worst: 'O(n log n)' },
   'Quick Sort': { best: 'O(n log n)', average: 'O(n log n)', worst: 'O(n²)' },
   'Heap Sort': { best: 'O(n log n)', average: 'O(n log n)', worst: 'O(n log n)' },
-  'Shell Sort': { best: 'O(n log n)', average: 'O(n^1.3)', worst: 'O(n²)' },
-  'Cocktail Sort': { best: 'O(n)', average: 'O(n²)', worst: 'O(n²)' },
-  'Comb Sort': { best: 'O(n log n)', average: 'O(n²)', worst: 'O(n²)' },
-  'Gnome Sort': { best: 'O(n)', average: 'O(n²)', worst: 'O(n²)' },
   'Counting Sort': { best: 'O(n+k)', average: 'O(n+k)', worst: 'O(n+k)' },
   'Radix Sort': { best: 'O(nk)', average: 'O(nk)', worst: 'O(nk)' },
   'Bucket Sort': { best: 'O(n+k)', average: 'O(n+k)', worst: 'O(n²)' }
@@ -210,79 +206,6 @@ async function heapify(size,i){
   }
 }
 
-async function shellSort(){
-  const n = arr.length;
-  for(let gap=Math.floor(n/2); gap>0; gap=Math.floor(gap/2)){
-    for(let i=gap;i<n;i++){
-      let temp = arr[i];
-      let j = i;
-      while(j>=gap && arr[j-gap] > temp){
-        uncolorAll(); color([j,j-gap],'compare'); await stepDelay();
-        arr[j] = arr[j-gap];
-        bars[j].style.height = arr[j] + '%';
-        j -= gap;
-      }
-      arr[j] = temp;
-      bars[j].style.height = arr[j] + '%';
-    }
-  }
-  bars.forEach(b=>b.classList.add('sorted'));
-}
-
-async function cocktailSort(){
-  let swapped = true;
-  let start = 0;
-  let end = arr.length -1;
-  while(swapped){
-    swapped = false;
-    for(let i=start;i<end;i++){
-      uncolorAll(); color([i,i+1],'compare'); await stepDelay();
-      if(arr[i] > arr[i+1]){ swap(i,i+1); swapped = true; }
-    }
-    bars[end].classList.add('sorted');
-    if(!swapped) break;
-    swapped = false;
-    end--;
-    for(let i=end-1;i>=start;i--){
-      uncolorAll(); color([i,i+1],'compare'); await stepDelay();
-      if(arr[i] > arr[i+1]){ swap(i,i+1); swapped = true; }
-    }
-    bars[start].classList.add('sorted');
-    start++;
-  }
-  bars.forEach(b=>b.classList.add('sorted'));
-}
-
-async function combSort(){
-  let gap = arr.length;
-  const shrink = 1.3;
-  let sorted = false;
-  while(!sorted){
-    gap = Math.floor(gap/shrink);
-    if(gap <= 1){ gap = 1; sorted = true; }
-    let i = 0;
-    while(i + gap < arr.length){
-      uncolorAll(); color([i,i+gap],'compare'); await stepDelay();
-      if(arr[i] > arr[i+gap]){
-        swap(i,i+gap);
-        sorted = false;
-      }
-      i++;
-    }
-  }
-  bars.forEach(b=>b.classList.add('sorted'));
-}
-
-async function gnomeSort(){
-  let index = 0;
-  while(index < arr.length){
-    if(index === 0) index++;
-    uncolorAll(); color([index,index-1],'compare'); await stepDelay();
-    if(arr[index] >= arr[index-1]) index++;
-    else{ swap(index,index-1); index--; }
-  }
-  bars.forEach(b=>b.classList.add('sorted'));
-}
 
 async function countingSort(){
   const maxVal = Math.max(...arr);
@@ -365,10 +288,6 @@ async function startSort(){
     else if(alg === 'Merge Sort') await mergeSortWrapper();
     else if(alg === 'Quick Sort') await quickSortWrapper();
     else if(alg === 'Heap Sort') await heapSort();
-    else if(alg === 'Shell Sort') await shellSort();
-    else if(alg === 'Cocktail Sort') await cocktailSort();
-    else if(alg === 'Comb Sort') await combSort();
-    else if(alg === 'Gnome Sort') await gnomeSort();
     else if(alg === 'Counting Sort') await countingSort();
     else if(alg === 'Radix Sort') await radixSort();
     else if(alg === 'Bucket Sort') await bucketSort();
